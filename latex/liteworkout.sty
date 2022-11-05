@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{liteworkout}[2022/22/22 lite workout]
+
+\RequirePackage{multirow}
+
+\newcommand{\exercise}[2]{%title,  reps
+    &\textbf{#1} & #2 &&&&&&&&\\\mycline}
+
+\newcommand{\mycline}[0]{\cline{2-11}}
+
+\newcommand{\schedule}[2]{
+    \thispagestyle{empty}
+    {\centering \Large \textbf{#1}\\}
+    \noindent\begin{figure}[h]
+        \Large
+        \makebox[\linewidth]{
+            {\renewcommand{\arraystretch}{1.2} %<- modify value to suit your needs
+                \begin{tabular}{c|p{5cm}|c|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}
+                    \mycline &\multicolumn{2}{|c|}{\textbf{Date}} &&&&&&&& \\
+                    \mycline &\textbf{Exercise} & \textbf{Reps} & \multicolumn{8}{c|}{\textbf{Load}} \\
+                    \mycline
+                    #2\end{tabular}}}
+    \end{figure}
+}
