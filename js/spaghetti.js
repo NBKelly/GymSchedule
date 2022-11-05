@@ -139,7 +139,7 @@ function clearHeading() {
 }
 
 function makeURL() {
-    var url = "https://latexonline.cc/compile?download=schedule.pdf&text="
+    var url = "https://latexonline.cc/compile?text="
 	+ encodeURIComponent(makeLatex());
 
     return url;
