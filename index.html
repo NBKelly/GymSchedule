@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workout Templater</title>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/spaghetti.js"></script>
+    <link rel="stylesheet" href="cobrastyle.css">
+  </head>
+  <body>
+    <h1>Workout Templater</h1>
+
+    <hr style="width:100%;text-align:left;margin-left:0">
+
+    <label for="heading">Heading: </label>
+    <input type="text" id="new_heading" name="New Heading" placeholder="Bro Split">
+    <button class="button button2" id="addHeadingButton"
+	    onclick="addHeading()">Add Heading</button>
+    <br><br>
+
+    <label for="exercise">Exercise: </label>
+    <input type="text" id="new_exercise" name="New Exercise" placeholder="Romanian Deadlift">
+    <label for="sets">Sets: </label>
+    <input type="number" id="sets" name="sets" min="0" max="50" value="3" size="2" maxlength="2">
+    <label for="reps">Reps: </label>
+    <input type="number" id="reps" name="reps" min="0" max="50" value="3" size="2" maxlength="2">
+    <button class="button button2" id="addExerciseButton"
+	    onclick="addExercise()">Add Exercise</button>
+
+    <br><br>
+
+    <!--
+	 Side by side view of Latex and a Heirarchy Tree.
+      -->
+    <table>
+      <tr>
+	<td>
+	  <p id="output-display" name="Output Display" data-placeholder="Latex Overview"></p>
+	</td>
+	<td>
+	  <p id="output-tree" name="Output Tree"></p>
+	</td>
+      </tr>
+    </table>
+
+    <button class="button button2" id="clearExerciseButton"
+	    onclick="clearExercise()">Clear Last Exercise</button>
+
+    <button class="button button2" id="clearHeadingButton"
+	    onclick="clearHeading()">Clear Last Heading</button>
+
+    <hr style="width:100%;text-align:left;margin-left:0">
+
+    <label for="pagetitle">I am committed to exercise: </label>
+    <button class="button button2" id="buildWorkoutButton"
+	    onclick="buildWorkout()">Build Workout</button>
+    <!--
+	pure spaghetti I hate computers
+      -->
+  </body>
+</html>
