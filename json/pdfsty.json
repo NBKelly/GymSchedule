@@ -1,6 +1,7 @@
 {
     "schedules": [{"name": "Simple 8-Session Programme",
 		   "value": "plain8",
+		   "description": "An aesthetically minimal schedule designed around an eight-week (or session) period of training. Exercises do not have notes or descriptions. Distinct load for each session.",
 		   "latex-preamble": "\\documentclass{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[landscape,margin=0.5in]{geometry}\n\\usepackage{multirow}\n\n\\newcommand{\\exercise}[2]{\n    &\\textbf{#1} & #2 &&&&&&&& \\\\ \n    \\mycline}\n\n\\newcommand{\\mycline}[0]{\\cline{2-11}}\n\n\\newcommand{\\schedule}[2]{\n    \\thispagestyle{empty}\n    \n    \\noindent\\begin{figure}[h]\n{\\centering \\Large \\textbf{#1}\\\\}\\vspace{0.8em}\n        \\Large\n        \\makebox[\\linewidth]{\n            {\\renewcommand{\\arraystretch}{1.2} %<- modify value to suit your needs\n                \\begin{tabular}{c|p{5cm}|c|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}\n                    \\mycline &\\multicolumn{2}{|c|}{\\textbf{Date}} &&&&&&&& \\\\ \n                    \\mycline &\\textbf{Exercise} & \\textbf{Reps} & \\multicolumn{8}{c|}{\\textbf{Load}} \\\\ \n                    \\mycline \n                    #2\\end{tabular}}}\n    \\end{figure}\n}\n\n\\begin{document}",
 		   "latex-closer": "\\end{document}",
 		   "latex-heading-opener-empty": "\\schedule{#1}{",
@@ -22,6 +23,7 @@
 		  },
 		  {"name": "Basic Introductory Programme",
 		   "value": "beginner1",
+		   "description": "A simple, easy to follow layout designed for people who are new to gym training. There is a single load column, and the participant should be instructed to follow the same programming for several weeks in preperation for a more advanced programme. Headings are seperate directions (ie 'Rower - 5m').",
 		   "latex-preamble": "\\documentclass{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[margin=0.5in]{geometry}\n\n\\usepackage{multirow}\n\\usepackage{array}\n\\usepackage{xcolor}\n\\usepackage{colortbl}\n\n\\definecolor{LightCyan}{rgb}{0.88,1,1}\n\n\\newcommand{\\PreserveBackslash}[1]{\\let\\temp=\\\\#1\\let\\\\=\\temp}\n\\newcolumntype{C}[1]{>{\\PreserveBackslash\\centering}p{#1}}\n\n\\newcommand{\\exercise}[3]{\n\\hspace{0.7em}\\textbf{#1} {\\small\\textcolor{gray}{\\textit{#3}}} &&\\textbf{#2}\\\\\\hline\n}\n\n\\newcommand{\\cardio}[1]{\n\\begin{center}\n\\large\\textbf{#1}\n\\end{center}\n}\n\n\\newcommand{\\schedule}[1]{\n    \\noindent\\Large\n    \\makebox[\\linewidth]{\n        {\\renewcommand{\\arraystretch}{1.2} %<- modify value to suit your needs\n            \\begin{tabular}{|p{10cm}|C{2cm}|C{2cm}|}\n            \\hline \\rowcolor{LightCyan}\\centering\\textbf{Exercise} & \\textbf{Load} &\\textbf{Reps}\\\\\n            \\hline\n            #1\n            \\end{tabular}\n        }\n    }\n}\n\\begin{document}\n",
 		   "latex-closer": "\\end{document}",
 		   "latex-heading-opener-empty": "\\cardio{#1}",
