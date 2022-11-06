@@ -9,7 +9,8 @@
 		   "latex-heading-opener": "\\schedule{#1}{",
 		   "latex-heading-closer-nameless-empty": "",
 		   "latex-heading-closer-empty": "}",
-		   "latex-heading-closer": "}"
+		   "latex-heading-closer": "}",
+		   "latex-exercise": "\\exercise{#1}{#2}"
 		  },
 		  {"name": "Basic Introductory Programme",
 		   "value": "beginner1",
@@ -21,7 +22,8 @@
 		   "latex-heading-opener": "\\cardio{#1}\n\\schedule{",
 		   "latex-heading-closer-nameless-empty": "",
 		   "latex-heading-closer-empty": "",
-		   "latex-heading-closer": "}"
+		   "latex-heading-closer": "}",
+		   "latex-exercise": "\\exercise{#1}{#2}{#3}"
 		  }
 		 ]
 }
