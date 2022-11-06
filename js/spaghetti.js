@@ -63,7 +63,7 @@ let Heading = class {
 
 	this.exercises.forEach((exercise) => buffer.push("\n" + exercise.latex(style)));
 
-	return buffer.join();
+	return buffer.join('');
     }
 
     /* process latex the ordinary way */
