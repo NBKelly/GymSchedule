@@ -1,0 +1,27 @@
+{
+    "schedules": [{"name": "Simple 8-Session Programme",
+		   "value": "plain8",
+		   "latex-preamble": "preamble",
+		   "latex-closer": "\\end{document}",
+		   "latex-heading-opener-empty": "\\schedule{#1}{",
+		   "latex-heading-opener-nameless": "\\schedule{}{",
+		   "latex-heading-opener-nameless-empty": "",
+		   "latex-heading-opener": "\\schedule{#1}{",
+		   "latex-heading-closer-nameless-empty": "",
+		   "latex-heading-closer-empty": "}",
+		   "latex-heading-closer": "}"
+		  },
+		  {"name": "Basic Introductory Programme",
+		   "value": "beginner1",
+		   "latex-preamble": "preamble",
+		   "latex-closer": "\\end{document}",
+		   "latex-heading-opener-empty": "\\cardio{#1}",
+		   "latex-heading-opener-nameless": "\\schedule{",
+		   "latex-heading-opener-nameless-empty": "",
+		   "latex-heading-opener": "\\cardio{#1}\n\\schedule{",
+		   "latex-heading-closer-nameless-empty": "",
+		   "latex-heading-closer-empty": "",
+		   "latex-heading-closer": "}"
+		  },
+		 ]
+}
