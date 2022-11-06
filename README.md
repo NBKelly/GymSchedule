@@ -8,6 +8,8 @@ I don't want to fiddle around with office or latex or anything else to build a w
 
 This is quite minimalist, which is a personal preference. As I need them, I will add more stylesheets to the roster.
 
+This was also a fun exercise in metaprogramming and automation, two of my favourite things.
+
 ### How does it work?
 
 You create headings (or blocks), and each heading/block can contain multiple exercises. Exactly how the output looks will be based on the stylesheet you choose, but it should be simple enough.
