@@ -10,7 +10,15 @@
 		   "latex-heading-closer-nameless-empty": "",
 		   "latex-heading-closer-empty": "}",
 		   "latex-heading-closer": "}",
-		   "latex-exercise": "\\exercise{#1}{#2}"
+		   "latex-exercise": "\\exercise{#1}{#2}",
+		   "display-exercise": "├──#1 (#2)",
+		   "display-exercise-first": "├──#1 (#2)",
+		   "display-exercise-only": "└──#1 (#2)",
+		   "display-exercise-last": "└──#1 (#2)",
+		   "display-heading": "#1",
+		   "display-heading-nameless": "(no-name)",
+		   "display-heading-empty": "#1",
+		   "display-heading-empty-nameless": "(no-name,empty)"
 		  },
 		  {"name": "Basic Introductory Programme",
 		   "value": "beginner1",
@@ -23,7 +31,15 @@
 		   "latex-heading-closer-nameless-empty": "",
 		   "latex-heading-closer-empty": "",
 		   "latex-heading-closer": "}",
-		   "latex-exercise": "\\exercise{#1}{#2}{#3}"
+		   "latex-exercise": "\\exercise{#1}{#2}{#3}",
+		   "display-exercise": "├──#1 (#2)",
+		   "display-exercise-first": "┌──#1 (#2)",
+		   "display-exercise-only": "───#1 (#2)",
+		   "display-exercise-last": "└──#1 (#2)",
+		   "display-heading": "#1",
+		   "display-heading-nameless": "(no-name)",
+		   "display-heading-empty": "#1",
+		   "display-heading-empty-nameless": "(no-name,empty)"
 		  }
 		 ]
 }
