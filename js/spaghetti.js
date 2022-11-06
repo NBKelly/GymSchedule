@@ -146,12 +146,15 @@ async function loadStyles() {
 	    select.appendChild(opt);
 	    styles[schedule.value] = schedule;
 	});
+
+    selectChanged();
 }
 
 function selectChanged() {
     var style = getStyle();
     displayLatex(style);
     displayTree(style);
+    document.querySelector('#stylesheet-description').innerHTML = style['description'];
 }
 
 function getStyle() {
