@@ -11,14 +11,14 @@
 		   "latex-heading-closer-empty": "}",
 		   "latex-heading-closer": "}",
 		   "latex-exercise": "\\exercise{#1}{#2}",
-		   "display-exercise": "├──#1 (#2)",
-		   "display-exercise-first": "├──#1 (#2)",
-		   "display-exercise-only": "└──#1 (#2)",
-		   "display-exercise-last": "└──#1 (#2)",
-		   "display-heading": "#1",
-		   "display-heading-nameless": "(no-name)",
-		   "display-heading-empty": "#1",
-		   "display-heading-empty-nameless": "(no-name,empty)"
+		   "display-exercise": "├──#1 (#2)\n",
+		   "display-exercise-first": "├──#1 (#2)\n",
+		   "display-exercise-only": "└──#1 (#2)\n\n",
+		   "display-exercise-last": "└──#1 (#2)\n\n",
+		   "display-heading": "#1\n",
+		   "display-heading-nameless": "(no-name)\n",
+		   "display-heading-empty": "#1\n\n",
+		   "display-heading-empty-nameless": "(no-name,empty)\n\n"
 		  },
 		  {"name": "Basic Introductory Programme",
 		   "value": "beginner1",
@@ -32,14 +32,14 @@
 		   "latex-heading-closer-empty": "",
 		   "latex-heading-closer": "}",
 		   "latex-exercise": "\\exercise{#1}{#2}{#3}",
-		   "display-exercise": "├──#1 (#2)",
-		   "display-exercise-first": "┌──#1 (#2)",
-		   "display-exercise-only": "───#1 (#2)",
-		   "display-exercise-last": "└──#1 (#2)",
-		   "display-heading": "#1",
-		   "display-heading-nameless": "(no-name)",
-		   "display-heading-empty": "#1",
-		   "display-heading-empty-nameless": "(no-name,empty)"
+		   "display-exercise": "├──#1 (#2)\n",
+		   "display-exercise-first": "┌──#1 (#2)\n",
+		   "display-exercise-only": "───#1 (#2)\n\n",
+		   "display-exercise-last": "└──#1 (#2)\n\n",
+		   "display-heading": "#1\n",
+		   "display-heading-nameless": "(no-name)\n",
+		   "display-heading-empty": "#1\n\n",
+		   "display-heading-empty-nameless": "(no-name,empty)\n\n"
 		  }
 		 ]
 }
