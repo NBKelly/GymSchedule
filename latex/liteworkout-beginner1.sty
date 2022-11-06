@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{liteworkout-beginner1}[2022/11/06]
+
+\RequirePackage{multirow}
+\RequirePackage{array}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+
+\newcommand{\exercise}[3]{
+\hspace{0.7em}\textbf{#1} {\small\textcolor{gray}{\textit{#3}}} &&\textbf{#2}\\\hline
+}
+
+\newcommand{\cardio}[1]{
+\begin{center}
+\large\textbf{#1}
+\end{center}
+}
+
+\newcommand{\schedule}[1]{
+    \Large
+    \makebox[\linewidth]{
+        {\renewcommand{\arraystretch}{1.2} %<- modify value to suit your needs
+            \begin{tabular}{|p{10cm}|C{2cm}|C{2cm}|}
+            \hline \rowcolor{LightCyan}\centering\textbf{Exercise} & \textbf{Load} &\textbf{Reps}\\
+            \hline
+            #1
+            \end{tabular}
+        }
+    }
+}
