@@ -1,11 +1,30 @@
 let Exercise = class {
-    constructor(name, reps) {
+    constructor(name, reps, reminder) {
 	this.name = name;
 	this.reps = reps;
+	this.reminder = reminder;
     }
 
-    latex()   {return "  \\exercise{" + this.name + "}{" + this.reps + "}"; }
-    display() {return this.name + " (" + this.reps + ")"; }
+    latex(style)   {return style['latex-exercise']
+		    .replaceAll('#1', this.name)
+		    .replaceAll('#2', this.reps)
+		    .replaceAll('#3', this.reminder);}
+
+    display(style, count, index) {
+	return this.processDisplay(style, count, index)
+	    .replaceAll('#1', this.name)
+	    .replaceAll('#2', this.reps)
+	    .replaceAll('#3', this.reminder);}
+
+    processDisplay(style, count, index) {
+	if(count == 1)
+	    return style['display-exercise-only'];
+	if(index == 0)
+	    return style['display-exercise-first'];
+	if(index == count - 1)
+	    return style['display-exercise-last'];
+	return style['display-exercise'];
+    }
 }
 
 let Heading = class {
@@ -14,31 +33,133 @@ let Heading = class {
 	this.exercises = [];
     }
 
+    /* are there any exercises */
+    empty() {
+	return this.exercises.length == 0;
+    }
+
+    /* is this unnamed */
+    nameless() {
+	return this.name.trim() == "";
+    }
+
     // add an exercise to the set of exercises here
     add(exercise) {this.exercises.push(exercise);}
+
     //wraps content in a latex container
-    latex() {
+    latex(style) { return this.selectLatex(style).replaceAll('#1', this.name); }
+
+    /* select the appropriate way to style this item */
+    selectLatex(style) {
+	if(this.empty() && !this.nameless()) return this.emptyLatex(style);
+	if(this.nameless() && !this.empty()) return this.namelessLatex(style);
+	if(this.empty() && this.nameless()) return this.emptyNamelessLatex(style);
+	return this.normalLatex(style);
+    }
+
+    /* process ordinary exercises */
+    processLatexExercises(style) {
 	var buffer = [];
-	buffer.push("\\schedule{" + this.name + "}{");
-	for (var j = 0; j < this.exercises.length; j++)
-	    buffer.push(this.exercises[j].latex());
 
-	return buffer.join('\n') + "}";
-    }
-    display() {
-	var _name = this.name;
-	if (_name == null || _name == "")
-	    _name = "[empty]";
-	var buffer = [_name];
-	for(var k = 0; k < this.exercises.length; k++) {
-	    if(k != this.exercises.length - 1)
-		buffer.push("├──" + this.exercises[k].display());
-	    else
-		buffer.push("└──" + this.exercises[k].display());
-	}
+	this.exercises.forEach((exercise) => buffer.push("\n" + exercise.latex(style)));
 
-	return buffer.join('\n');
+	return buffer.join();
     }
+
+    /* process latex the ordinary way */
+    normalLatex(style) {
+	return style['latex-heading-opener'] + this.processLatexExercises(style)
+	    + style['latex-heading-closer'];
+    }
+
+    /* process latex with no heading name */
+    emptyNamelessLatex(style) {
+	return style['latex-heading-opener-nameless-empty']
+	    + style['latex-heading-closer-nameless-empty'];
+    }
+
+    /* process latex with no content */
+    emptyLatex(style) { return style['latex-heading-opener-empty'] + style['latex-heading-closer-empty']; }
+
+    /* process latex with no name or content */
+    namelessLatex(style) {
+	return style['latex-heading-opener-nameless'] + this.processLatexExercises(style)
+	    + style['latex-heading-closer'];
+    }
+
+    display(style) {
+	return this.selectDisplay(style).replaceAll('#1', this.name);
+    }
+
+    /* process ordinary exercises */
+    processDisplayExercises(style) {
+	var buffer = [];
+	for(var x = 0; x < this.exercises.length; x++)
+	    buffer.push(this.exercises[x].display(style, this.exercises.length, x));
+
+	return buffer.join('');
+    }
+
+    selectDisplay(style) {
+	if(this.empty() && !this.nameless()) return this.emptyDisplay(style);
+	if(this.nameless() && !this.empty()) return this.namelessDisplay(style);
+	if(this.empty() && this.nameless()) return this.emptyNamelessDisplay(style);
+	return this.normalDisplay(style);
+    }
+
+    emptyDisplay(style) { return style['display-heading-empty']; }
+    emptyNamelessDisplay(style) { return style['display-heading-empty-nameless']; }
+    namelessDisplay(style) {
+	return style['display-heading-nameless'] + this.processDisplayExercises(style);
+    }
+    normalDisplay(style) {
+	return style['display-heading'] + this.processDisplayExercises(style);
+    }
+}
+
+async function fetchStyles() {
+    var addr = "json/pdfsty.json";
+
+    /* I hate web development so much it's unreal */
+    if(window.location.protocol == 'file:')
+	addr = "https://nbkelly.github.io/GymSchedule/" + addr;
+
+    const res = await fetch(addr)
+	  .then((response) => response.json());
+
+    var json = await res;
+
+    return json;
+}
+
+var styles = {};
+
+async function loadStyles() {
+    var select = document.querySelector('#stylesheet');
+    var json = await fetchStyles();
+
+    json.schedules.forEach(
+	(schedule) => {
+	    var opt = document.createElement('option');
+	    opt.value = schedule.value;
+	    opt.innerHTML = schedule.name;
+	    select.appendChild(opt);
+	    styles[schedule.value] = schedule;
+	});
+}
+
+function selectChanged() {
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
+}
+
+function getStyle() {
+    var select = document.querySelector("#stylesheet");
+    var value = select.value;
+    var style = styles[value];
+
+    return style;
 }
 
 var headings = [];
@@ -52,45 +173,43 @@ function escapeHTML(str) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 }
 
-function prettyLatex() {
+function prettyLatex(style) {
     var pretty = [];
-    for(var i = 0; i < headings.length; i++)
-	pretty.push(headings[i].latex());
+    headings.forEach((heading) => pretty.push(heading.latex(style)));
     return pretty.join('\n');
 }
 
-function prettyTree() {
+function prettyTree(style) {
     var pretty = [];
-    for(var i = 0; i < headings.length; i++)
-	pretty.push(headings[i].display());
+    headings.forEach((heading) => pretty.push(heading.display(style)));
     return pretty.join('\n');
 }
 
+function makeLatex(style) {
+    var opener = style['latex-preamble'];
+    var closer = style['latex-closer'];
 
-function makeLatex() {
-    var opener = "\\documentclass{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[landscape,margin=0.5in]{geometry}\n\\usepackage{multirow}\n\n\\newcommand{\\exercise}[2]{\n    &\\textbf{#1} & #2 &&&&&&&& \\\\ \n    \\mycline}\n\n\\newcommand{\\mycline}[0]{\\cline{2-11}}\n\n\\newcommand{\\schedule}[2]{\n    \\thispagestyle{empty}\n    \n    {\\centering \\Large \\textbf{#1}\\\\}\n    \\noindent\\begin{figure}[h]\n        \\Large\n        \\makebox[\\linewidth]{\n            {\\renewcommand{\\arraystretch}{1.2} %<- modify value to suit your needs\n                \\begin{tabular}{c|p{5cm}|c|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}\n                    \\mycline &\\multicolumn{2}{|c|}{\\textbf{Date}} &&&&&&&& \\\\ \n                    \\mycline &\\textbf{Exercise} & \\textbf{Reps} & \\multicolumn{8}{c|}{\\textbf{Load}} \\\\ \n                    \\mycline \n                    #2\\end{tabular}}}\n    \\end{figure}\n}\n\n\\begin{document}";
-    var closer = "\n\n\\end{document}";
-
-    var full = opener + prettyLatex() + closer;
+    var full = opener + prettyLatex(style) + closer;
 
     return full;
 }
 
-function displayLatex() {
-    document.querySelector("#output-display").innerHTML = asHTML(escapeHTML(prettyLatex()));
+function displayLatex(style) {
+    document.querySelector("#output-display").innerHTML = asHTML(escapeHTML(prettyLatex(style)));
 }
 
-function displayTree() {
-    document.querySelector("#output-tree").innerHTML = asHTML(escapeHTML(prettyTree()));
+function displayTree(style) {
+    document.querySelector("#output-tree").innerHTML = asHTML(escapeHTML(prettyTree(style)));
 }
 
 function addHeading() {
     var heading = new Heading(document.querySelector("#new_heading").value)
     headings.push(heading);
     activeHeading = heading;
-    console.log(headings);
-    displayLatex();
-    displayTree();
+
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
 }
 
 function addExercise() {
@@ -108,10 +227,11 @@ function addExercise() {
 	reps = d_sets + " x " + d_reps;
 
     if(activeHeading != null)
-	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps));
+	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps, "some useless reminder"));
 
-    displayLatex();
-    displayTree();
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
 }
 
 function clearExercise() {
@@ -119,8 +239,10 @@ function clearExercise() {
        activeHeading.exercises.length > 0) {
 	activeHeading.exercises.pop();
     }
-    displayLatex();
-    displayTree();
+
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
 }
 
 function clearHeading() {
@@ -132,15 +254,17 @@ function clearHeading() {
 	    activeHeading = null;
     }
 
-    console.log(headings);
-
-    displayLatex();
-    displayTree();
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
 }
 
 function makeURL() {
+    var style = getStyle();
+    var latex = makeLatex(style);
+    console.log("latex: " + latex);
     var url = "https://latexonline.cc/compile?text="
-	+ encodeURIComponent(makeLatex());
+	+ encodeURIComponent(latex);
 
     return url;
 }
