@@ -1,6 +1,5 @@
 let Exercise = class {
-    constructor(name, reps, reminder,
-		raw_sets, raw_reps, rest) {
+    constructor(name, reps, reminder, raw_sets, raw_reps, rest) {
 	this.name = name; //#1
 	this.reps = reps; //#2
 	this.reminder = reminder; //#3
@@ -127,6 +126,39 @@ let Heading = class {
     }
 }
 
+let TemplateFocus = class {
+    constructor(name, sets, reps, rest, tip){
+	this.name = name;
+	this.sets = sets;
+	this.reps = reps;
+	this.rest = rest;
+	this.tip = tip;
+    };
+}
+let TemplateExercise = class {
+    constructor(name, _focii, tip) {
+	this.name = name;
+	this.focii = {};
+	for( var key in _focii) {
+	    var focus = _focii[key]['val'];
+	    var _tip =tip;
+	    if(focus.hasOwnProperty['tip'])
+		_tip = focus['tip'];
+
+	    var fname = _focii[key]['name'];
+	    this.focii[fname] = new TemplateFocus(fname,
+						  focus['sets'],
+						  focus['reps'],
+						  focus['rest'],
+						  _tip);
+	}
+    }
+
+    getFocus(str) {
+	return this.focii[str];
+    }
+}
+
 async function fetchStyles() {
     var addr = "json/pdfsty.json";
 
@@ -142,7 +174,25 @@ async function fetchStyles() {
     return json;
 }
 
+async function fetchExercises() {
+    var addr = "json/exercises-by-category.json";
+
+    /* I hate web development so much it's unreal */
+    if(window.location.protocol == 'file:')
+	addr = "https://nbkelly.github.io/GymSchedule/" + addr;
+
+    const res = await fetch(addr)
+	  .then((response) => response.json());
+
+    var json = await res;
+
+    return json;
+}
+
 var styles = {};
+var exercises = {}; //name -> exercise
+var categories = new Set();
+var exercises_by_category = {}; //cat -> exercise name
 
 async function loadStyles() {
     var select = document.querySelector('#stylesheet');
@@ -157,7 +207,47 @@ async function loadStyles() {
 	    styles[schedule.value] = schedule;
 	});
 
-    selectChanged();
+    styleSelectChanged();
+}
+
+async function loadExercises() {
+    var select = document.querySelector('#exercise-select');
+    var json = await fetchExercises();
+
+    json.exercises.forEach(
+	(exercise) => {
+	    exercises[exercise['name']] = new TemplateExercise(exercise['name'], exercise['focus'], exercise['tip']);
+	    var cats = exercise.categories.forEach(
+		(category) => {
+		    if(!categories.has(category)) {
+			categories.add(category);
+			exercises_by_category[category] = [];
+		    }
+		    exercises_by_category[category].push(exercises[exercise['name']]);
+		});
+	});
+
+    categories.forEach(
+	(cat) => {
+	    var group = document.createElement('optgroup');
+	    group.label = cat;
+	    exercises_by_category[cat].forEach(
+		(exercise) => {
+		    var opt = document.createElement('option');
+		    opt.value = exercise['name'];
+		    opt.innerHTML = exercise['name'];
+		    group.appendChild(opt);
+		});
+
+	    select.appendChild(group);
+	});
+
+    exerciseSelectChanged();
+}
+
+function spaghettiOnLoad() {
+    loadStyles();
+    loadExercises();
 }
 
 function getStyle() {
@@ -174,7 +264,46 @@ function redraw() {
     displayTree(style);
 }
 
-function selectChanged() {
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+
+function exerciseSelectChanged() {
+    var select = document.querySelector('#exercise-select').value;
+    var focii = exercises[select].focii;
+
+    var focusBox = document.querySelector('#exercise-focus-select');
+    removeOptions(focusBox);
+
+    for(var focus in focii) {
+	var opt = document.createElement('option');
+	opt.value = focus;
+	opt.innerHTML = focus;
+	focusBox.appendChild(opt);
+    }
+
+
+    exerciseFocusChanged();
+}
+
+function exerciseFocusChanged() {
+    // fill out the exercise fields based on the selected exercise and focus
+    var selectedFocus = document.querySelector('#exercise-focus-select').value;
+    var selectedExercise = document.querySelector('#exercise-select').value;
+    var focus = exercises[selectedExercise].getFocus(selectedFocus);
+
+    // fill out info in sets, reps, rest, reminder, exercise
+    document.querySelector('#new_exercise').value = selectedExercise;
+    document.querySelector('#sets').value = focus.sets;
+    document.querySelector('#reps').value = focus.reps;
+    document.querySelector('#rest').value = focus.rest;
+    document.querySelector('#reminder').value = focus.tip;
+}
+
+function styleSelectChanged() {
     redraw();
     var style = getStyle();
     document.querySelector('#stylesheet-description').innerHTML = style['description'];

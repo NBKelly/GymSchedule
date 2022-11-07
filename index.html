@@ -6,13 +6,12 @@
     <script type="text/javascript" src="js/spaghetti.js"></script>
     <link rel="stylesheet" href="cobrastyle.css">
   </head>
-  <body onload="loadStyles()">
+  <body onload="spaghettiOnLoad()">
     <h1>Workout Templater</h1>
 
     <label for="stylesheet">Stylesheet: </label>
-    <select name="stylesheet" id="stylesheet" onchange="selectChanged()">
+    <select name="stylesheet" id="stylesheet" onchange="styleSelectChanged()"></select>
 
-    </select>
     <br><br>
     <span name="stylesheet-description" id="stylesheet-description"></span>
 
@@ -29,20 +28,39 @@
 	    onclick="addHeading()">Add Heading</button>
     <br><br>
 
-    <label for="exercise">Exercise: </label>
-    <input type="text" id="new_exercise" name="New Exercise" placeholder="Romanian Deadlift">
-    <label for="sets">Sets: </label>
-    <input type="text" id="sets" name="sets" value="3" size="6">
-    <label for="reps">Reps: </label>
-    <input type="text" id="reps" name="reps" value="3" size="6">
+    <p>Select an exercise from the drop-down menu, or manually enter exercise details below.</p>
     <br>
-    <label for="rest">Rest: </label>
-    <input type="text" id="rest" name="rest" placeholder="45s"></input>
-    <label for="reminder">Reminder:</label>
-    <input type="text" id="reminder" name="reminder" size="40" placeholder="Squeeze shoulder blades">
-    <button class="button button2" id="addExerciseButton"
-	    onclick="addExercise()">Add Exercise</button>
+    <label for="exercise-select">Exercise: </label>
+    <select name="exercise-select" id="exercise-select" onchange="exerciseSelectChanged()"></select>
+    <label for="exercise-focus-select">Focus: </label>
+    <select id="exercise-focus-select" onchange="exerciseFocusChanged()"></select>
 
+    <br><br>
+
+    <table>
+      <tr>
+	<td><label for="exercise">Exercise: </label></td>
+	<td><input type="text" id="new_exercise" name="New Exercise" placeholder="Romanian Deadlift">
+	<button class="button button2" id="addExerciseButton"
+		onclick="addExercise()">Add Exercise</button></td>
+      </tr>
+      <tr>
+	<td><label for="sets">Sets: </label></td>
+	<td><input type="text" id="sets" name="sets" value="3" size="6"></td>
+      </tr>
+      <tr>
+	<td><label for="reps">Reps: </label></td>
+	<td><input type="text" id="reps" name="reps" value="3" size="6"></td>
+      </tr>
+      <tr>
+	<td><label for="rest">Rest: </label></td>
+	<td><input type="text" id="rest" name="rest" placeholder="45s"></input></td>
+      </tr>
+      <tr>
+	<td><label for="reminder">Reminder:</label></td>
+	<td><input type="text" id="reminder" name="reminder" size="40" placeholder="Squeeze shoulder blades"></td>
+      </tr>
+    </table>
     <br><br>
 
     <!--
