@@ -82,7 +82,7 @@
 		   "display-exercise-only": "├──#1 (#4 x #5, #6 rest): #3\n",
 		   "display-exercise-last": "├──#1 (#4 x #5, #6 rest): #3\n",
 		   "display-heading": "├#1\n",
-		   "display-heading-nameless": "├",
+		   "display-heading-nameless": "├\n",
 		   "display-heading-empty": "├#1\n",
 		   "display-heading-empty-nameless": "(no-name,empty)\n"
 		  }
