@@ -22,8 +22,14 @@ Try it out at: https://nbkelly.github.io/GymSchedule/
 
 ### TODO
 
+* Output raw latex option (so you can paste it into overleaf)
 * Add more stylesheets as need demands
 * Fiddle with the design a little maybe
 * There's a chance that `spaghetti.js` needs to be split into multiple files
-* Add in a pre-baked exercise selector (requires a dictionary of exercises), which fills out reps based on goals (strength, endurance, hypertrophy, power).
+* ~~Add in a pre-baked exercise selector (requires a dictionary of exercises), which fills out reps based on goals (strength, endurance, hypertrophy, power, etc).~~ Done
+* Expand on the list of prebaked exercises as I need to
+* Develop a little tool to make entering pre-baked exercises easy to do
+* Develop a little tool to make entering pre-baked schedules easy to do as well
 * Add in some pre-baked schedules (a couple of beginner programs, a couple of intermediate programs - basically the things that I use).
+* Decide on a worthwhile name
+* Remember how to format nice looking markdown
