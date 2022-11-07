@@ -209,9 +209,9 @@ function prettyLatex(style) {
     else
 	title = style['latex-no-title'];
 
-    push_if_real(title, pretty);
-
     push_if_real(style['latex-opener'], pretty);
+
+    push_if_real(title, pretty);
 
     headings.forEach((heading) => pretty.push(heading.latex(style)));
     push_if_real(style['latex-closer'], pretty);
