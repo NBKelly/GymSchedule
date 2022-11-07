@@ -178,7 +178,6 @@ async function fetchJson(str) {
 
 var styles = {};
 var exercises = {}; //name -> exercise
-var categories = new Set();
 var exercises_by_category = {}; //cat -> exercise name
 
 async function loadStyles() {
@@ -200,7 +199,7 @@ async function loadStyles() {
 async function loadExercises() {
     var select = document.querySelector('#exercise-select');
     var json = await fetchJson("exercises-by-category");
-
+    var categories = new Set();
     json.exercises.forEach(
 	(exercise) => {
 	    exercises[exercise['name']] = new TemplateExercise(exercise['name'], exercise['focus'], exercise['tip']);
@@ -290,10 +289,19 @@ function exerciseFocusChanged() {
     document.querySelector('#reminder').value = focus.tip;
 }
 
+function grayIfUnsupported(element, value) {
+    var col = (!value ? 'lightgray' : null);
+    document.querySelector(element).style.backgroundColor = col;
+}
+
 function styleSelectChanged() {
     redraw();
     var style = getStyle();
     document.querySelector('#stylesheet-description').innerHTML = style['description'];
+
+    // gray out boxes which don't really matter
+    grayIfUnsupported('#reminder', style['supports-reminder']);
+    grayIfUnsupported('#rest', style['supports-rest']);
 }
 
 function titleChanged() {
@@ -414,10 +422,7 @@ function clearExercise() {
 function clearHeading() {
     if(headings.length > 0) {
 	headings.pop();
-	if(headings.length > 0)
-	    activeHeading = headings[headings.length - 1];
-	else
-	    activeHeading = null;
+	activeHeading = (headings.length > 0 ? headings[headings.length - 1] : null);
     }
 
     redraw();

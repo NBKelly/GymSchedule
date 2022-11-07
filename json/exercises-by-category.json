@@ -7,7 +7,7 @@
 	{
 	    "name": "Clean Long Pull",
 	    "categories": ["Olympic", "Compound"],
-	    "tip": "Advanced - Bar may not strike body, no hook grip",
+	    "tip": "Bar may not strike body. No hook grip.",
 	    "focus": [
 		{"name": "Strength", "val": {"reps": "5", "sets": "3", "rest": "1-3m"}},
 		{"name": "Power", "val": {"reps": "1-2", "sets": "5", "rest": "1-5m"}}
