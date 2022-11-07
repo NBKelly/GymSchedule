@@ -204,14 +204,15 @@ function prettyLatex(style) {
 
     //title
     var title = document.querySelector("#doc-title").value;
+
     if(if_real(title))
 	title = style['latex-title'].replace('#1', title);
     else
 	title = style['latex-no-title'];
 
-    push_if_real(style['latex-opener'], pretty);
-
     push_if_real(title, pretty);
+
+    push_if_real(style['latex-opener'], pretty);
 
     headings.forEach((heading) => pretty.push(heading.latex(style)));
     push_if_real(style['latex-closer'], pretty);
@@ -223,6 +224,7 @@ function prettyTree(style) {
 
     //title
     var title = document.querySelector("#doc-title").value;
+
     if(if_real(title))
 	title = style['display-title'].replace('#1', title);
     else
@@ -236,9 +238,8 @@ function prettyTree(style) {
 
 function makeLatex(style) {
     var opener = style['latex-preamble'];
-    var closer = style['latex-closer'];
 
-    var full = opener + prettyLatex(style) + closer;
+    var full = opener + prettyLatex(style);
 
     return full;
 }
