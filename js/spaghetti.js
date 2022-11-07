@@ -1,20 +1,30 @@
 let Exercise = class {
-    constructor(name, reps, reminder) {
-	this.name = name;
-	this.reps = reps;
-	this.reminder = reminder;
+    constructor(name, reps, reminder,
+		raw_sets, raw_reps, rest) {
+	this.name = name; //#1
+	this.reps = reps; //#2
+	this.reminder = reminder; //#3
+	this.raw_sets = raw_sets; //#4
+	this.raw_reps = raw_reps; //#5
+	this.rest = rest; //#6
     }
 
     latex(style)   {return style['latex-exercise']
 		    .replaceAll('#1', this.name)
 		    .replaceAll('#2', this.reps)
-		    .replaceAll('#3', this.reminder);}
+		    .replaceAll('#3', this.reminder)
+		    .replaceAll('#4', this.raw_sets)
+		    .replaceAll('#5', this.raw_reps)
+		    .replaceAll('#6', this.rest);}
 
     display(style, count, index) {
 	return this.processDisplay(style, count, index)
 	    .replaceAll('#1', this.name)
 	    .replaceAll('#2', this.reps)
-	    .replaceAll('#3', this.reminder);}
+	    .replaceAll('#3', this.reminder)
+	    .replaceAll('#4', this.raw_sets)
+	    .replaceAll('#5', this.raw_reps)
+	    .replaceAll('#6', this.rest);}
 
     processDisplay(style, count, index) {
 	if(count == 1)
@@ -150,19 +160,28 @@ async function loadStyles() {
     selectChanged();
 }
 
-function selectChanged() {
-    var style = getStyle();
-    displayLatex(style);
-    displayTree(style);
-    document.querySelector('#stylesheet-description').innerHTML = style['description'];
-}
-
 function getStyle() {
     var select = document.querySelector("#stylesheet");
     var value = select.value;
     var style = styles[value];
 
     return style;
+}
+
+function redraw() {
+    var style = getStyle();
+    displayLatex(style);
+    displayTree(style);
+}
+
+function selectChanged() {
+    redraw();
+    var style = getStyle();
+    document.querySelector('#stylesheet-description').innerHTML = style['description'];
+}
+
+function titleChanged() {
+    redraw();
 }
 
 var headings = [];
@@ -176,14 +195,41 @@ function escapeHTML(str) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 }
 
+function if_real(str) { return (str != null & str.trim().length > 0)}
+
+function push_if_real(str, arr) { if(if_real(str)) arr.push(str);}
+
 function prettyLatex(style) {
     var pretty = [];
+
+    //title
+    var title = document.querySelector("#doc-title").value;
+    if(if_real(title))
+	title = style['latex-title'].replace('#1', title);
+    else
+	title = style['latex-no-title'];
+
+    push_if_real(title, pretty);
+
+    push_if_real(style['latex-opener'], pretty);
+
     headings.forEach((heading) => pretty.push(heading.latex(style)));
+    push_if_real(style['latex-closer'], pretty);
     return pretty.join('\n');
 }
 
 function prettyTree(style) {
     var pretty = [];
+
+    //title
+    var title = document.querySelector("#doc-title").value;
+    if(if_real(title))
+	title = style['display-title'].replace('#1', title);
+    else
+	title = style['display-no-title'];
+
+    push_if_real(title, pretty);
+
     headings.forEach((heading) => pretty.push(heading.display(style)));
     return pretty.join('\n');
 }
@@ -210,9 +256,7 @@ function addHeading() {
     headings.push(heading);
     activeHeading = heading;
 
-    var style = getStyle();
-    displayLatex(style);
-    displayTree(style);
+    redraw();
 }
 
 function addExercise() {
@@ -221,20 +265,24 @@ function addExercise() {
     var d_sets = document.querySelector("#sets").value;
     var d_reps = document.querySelector("#reps").value;
 
+    var rest = document.querySelector("#rest").value;
+    var reminder = document.querySelector("#reminder").value;
+
     if(d_sets == 0 || d_reps == 0) {
 	var total = parseInt(d_reps) + parseInt(d_sets);
-	if(total > 0)
+	if(total > 0) {
 	    reps = total;
+	    d_sets = 1;
+	    d_reps = reps;
+	}
     }
     else
 	reps = d_sets + " x " + d_reps;
 
     if(activeHeading != null)
-	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps, "some useless reminder"));
+	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps, reminder, d_sets, d_reps, rest));
 
-    var style = getStyle();
-    displayLatex(style);
-    displayTree(style);
+    redraw();
 }
 
 function clearExercise() {
@@ -243,9 +291,7 @@ function clearExercise() {
 	activeHeading.exercises.pop();
     }
 
-    var style = getStyle();
-    displayLatex(style);
-    displayTree(style);
+    redraw();
 }
 
 function clearHeading() {
@@ -257,9 +303,7 @@ function clearHeading() {
 	    activeHeading = null;
     }
 
-    var style = getStyle();
-    displayLatex(style);
-    displayTree(style);
+    redraw();
 }
 
 function makeURL() {
