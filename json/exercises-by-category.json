@@ -1,0 +1,18 @@
+{
+    "categories": ["Powerlifting", "Compound", "Isolation - Arms",
+		   "Isolation - Back", "Isolation - Chest",
+		   "Isolation - Core", "Isolation - Legs",
+		   "Isolation - Other", "Olympic", "Bodybuilding"],
+    "exercises": [
+	{
+	    "name": "Deadlift",
+	    "categories": ["Powerlifting", "Compound"],
+	    "tip": "Do not round lower back",
+	    "focus": [
+		{"Strength": "5 x 5"},
+		{"Hypertrophy": "3 x 10"},
+		{"Beginner": "2 x 10"}
+	    ]
+	}
+    ]
+}
