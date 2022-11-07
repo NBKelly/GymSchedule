@@ -5,6 +5,15 @@
 		   "Isolation - Other", "Olympic", "Bodybuilding"],
     "exercises": [
 	{
+	    "name": "Clean Long Pull",
+	    "categories": ["Olympic", "Compound"],
+	    "tip": "Advanced - Bar may not strike body, no hook grip",
+	    "focus": [
+		{"name": "Strength", "val": {"reps": "5", "sets": "3", "rest": "1-3m"}},
+		{"name": "Power", "val": {"reps": "1-2", "sets": "5", "rest": "1-5m"}}
+	    ]
+	},
+	{
 	    "name": "Deadlift",
 	    "categories": ["Powerlifting", "Compound"],
 	    "tip": "Do not round lower back.",

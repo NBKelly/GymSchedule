@@ -159,25 +159,12 @@ let TemplateExercise = class {
     }
 }
 
-async function fetchStyles() {
-    var addr = "json/pdfsty.json";
+async function fetchJson(str) {
+    var addr = "json/" + str + ".json";
 
-    /* I hate web development so much it's unreal */
-    if(window.location.protocol == 'file:')
-	addr = "https://nbkelly.github.io/GymSchedule/" + addr;
-
-    const res = await fetch(addr)
-	  .then((response) => response.json());
-
-    var json = await res;
-
-    return json;
-}
-
-async function fetchExercises() {
-    var addr = "json/exercises-by-category.json";
-
-    /* I hate web development so much it's unreal */
+    /* Love from Kazakhstan
+       This is required so I can actually load files from a local html file
+       I hate web development so much it's unreal */
     if(window.location.protocol == 'file:')
 	addr = "https://nbkelly.github.io/GymSchedule/" + addr;
 
@@ -196,7 +183,7 @@ var exercises_by_category = {}; //cat -> exercise name
 
 async function loadStyles() {
     var select = document.querySelector('#stylesheet');
-    var json = await fetchStyles();
+    var json = await fetchJson("pdfsty");
 
     json.schedules.forEach(
 	(schedule) => {
@@ -212,7 +199,7 @@ async function loadStyles() {
 
 async function loadExercises() {
     var select = document.querySelector('#exercise-select');
-    var json = await fetchExercises();
+    var json = await fetchJson("exercises-by-category");
 
     json.exercises.forEach(
 	(exercise) => {
