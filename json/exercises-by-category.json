@@ -22,6 +22,17 @@
 		{"name": "Hypertrophy", "val": {"reps": "10", "sets": "3", "rest": "60s"}},
 		{"name": "Beginner", "val": {"reps": "8-12", "sets": "2", "rest": "45-90s"}}
 	    ]
+	},
+	{
+	    "name": "Squat",
+	    "categories": ["Powerlifting", "Compound"],
+	    "tip": "Don't round back or buckle knees.",
+	    "focus": [
+		{"name": "Strength", "val": {"reps": "5", "sets": "3", "rest": "1-3m"}},
+		{"name": "Powerlifting ORM", "val": {"reps": "1", "sets": "5", "rest": "5m",
+						     "tip": "Hip crease below knees"}},
+		{"name": "Hypertrophy", "val": {"reps": "10", "sets": "3", "rest": "60s"}}
+	    ]
 	}
     ]
 }
