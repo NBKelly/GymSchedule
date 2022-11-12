@@ -17,6 +17,7 @@
 	    "name": "Deadlift",
 	    "categories": ["Powerlifting", "Compound"],
 	    "tip": "Do not round lower back.",
+	    "image": "images/deadlift.png",
 	    "focus": [
 		{"name": "Strength", "val": {"reps": "5", "sets": "5", "rest": "1-3m"}},
 		{"name": "Hypertrophy", "val": {"reps": "10", "sets": "3", "rest": "60s"}},
