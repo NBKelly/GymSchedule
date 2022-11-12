@@ -1,20 +1,35 @@
+const compile_url = "https://spark-latex-backend.herokuapp.com/compile/"
+//"http://127.0.0.1:5000/compile/"
+
 let Exercise = class {
-    constructor(name, reps, reminder, raw_sets, raw_reps, rest) {
+    constructor(name, reps, reminder, raw_sets, raw_reps, rest, image) {
 	this.name = name; //#1
 	this.reps = reps; //#2
 	this.reminder = reminder; //#3
 	this.raw_sets = raw_sets; //#4
 	this.raw_reps = raw_reps; //#5
 	this.rest = rest; //#6
+	this.image = image; //#7
     }
 
-    latex(style)   {return style['latex-exercise']
-		    .replaceAll('#1', this.name)
-		    .replaceAll('#2', this.reps)
-		    .replaceAll('#3', this.reminder)
-		    .replaceAll('#4', this.raw_sets)
-		    .replaceAll('#5', this.raw_reps)
-		    .replaceAll('#6', this.rest);}
+    latex(style)   {
+	if(style['supports-image'] && this.image != null)
+	    return style['latex-image-exercise']
+	    .replaceAll('#1', this.name)
+	    .replaceAll('#2', this.reps)
+	    .replaceAll('#3', this.reminder)
+	    .replaceAll('#4', this.raw_sets)
+	    .replaceAll('#5', this.raw_reps)
+	    .replaceAll('#6', this.rest)
+	    .replaceAll('#7', this.image);
+
+	return style['latex-exercise']
+	    .replaceAll('#1', this.name)
+	    .replaceAll('#2', this.reps)
+	    .replaceAll('#3', this.reminder)
+	    .replaceAll('#4', this.raw_sets)
+	    .replaceAll('#5', this.raw_reps)
+	    .replaceAll('#6', this.rest);}
 
     display(style, count, index) {
 	return this.processDisplay(style, count, index)
@@ -136,9 +151,10 @@ let TemplateFocus = class {
     };
 }
 let TemplateExercise = class {
-    constructor(name, _focii, tip) {
+    constructor(name, _focii, tip, image) {
 	this.name = name;
 	this.focii = {};
+	this.image = image;
 	for( var key in _focii) {
 	    var focus = _focii[key]['val'];
 	    var _tip =tip;
@@ -152,6 +168,10 @@ let TemplateExercise = class {
 						  focus['rest'],
 						  _tip);
 	}
+    }
+
+    getImage() {
+	return this.image;
     }
 
     getFocus(str) {
@@ -202,7 +222,7 @@ async function loadExercises() {
     var categories = new Set();
     json.exercises.forEach(
 	(exercise) => {
-	    exercises[exercise['name']] = new TemplateExercise(exercise['name'], exercise['focus'], exercise['tip']);
+	    exercises[exercise['name']] = new TemplateExercise(exercise['name'], exercise['focus'], exercise['tip'], exercise['image']);
 	    var cats = exercise.categories.forEach(
 		(category) => {
 		    if(!categories.has(category)) {
@@ -287,6 +307,17 @@ function exerciseFocusChanged() {
     document.querySelector('#reps').value = focus.reps;
     document.querySelector('#rest').value = focus.rest;
     document.querySelector('#reminder').value = focus.tip;
+
+    // does the exercise carry an image? say yes
+    var imageCheck = document.querySelector('#image');
+    if (exercises[selectedExercise].image != null) {
+	imageCheck.checked = true;
+	imageCheck.disabled = false;
+    }
+    else {
+	imageCheck.checked = false;
+	imageCheck.disabled = true;
+    }
 }
 
 function grayIfUnsupported(element, value) {
@@ -404,8 +435,15 @@ function addExercise() {
     else
 	reps = d_sets + " x " + d_reps;
 
+    var imageCheck = document.querySelector('#image');
+    var selectedExercise = exercises[document.querySelector('#exercise-select').value];
+
+    var image = null;
+    if(imageCheck.checked)
+	image = selectedExercise.image;
+
     if(activeHeading != null)
-	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps, reminder, d_sets, d_reps, rest));
+	activeHeading.add(new Exercise(document.querySelector("#new_exercise").value, reps, reminder, d_sets, d_reps, rest, image));
 
     redraw();
 }
@@ -428,18 +466,45 @@ function clearHeading() {
     redraw();
 }
 
-function makeURL() {
-    var style = getStyle();
-    var latex = makeLatex(style);
-    console.log("latex: " + latex);
-    var url = "https://latexonline.cc/compile?text="
-	+ encodeURIComponent(latex);
 
-    return url;
+function collectImages(latex) {
+    const re = RegExp("images\\/.*\\.(png|jpg)", 'g');
+    var res = [];
+    let arr1;
+
+    while((arr1 = re.exec(latex)) !== null) {
+	res.push(arr1[0]);
+    }
+
+    res = [...new Set(res)]
+
+    console.log(res);
+    return res;
 }
 
-function buildWorkout() {
-    var url = makeURL();
-    console.log(url);
+// Show PDF or Error in other tab
+async function showInOtherTab(blob) {
+    const url = window.URL.createObjectURL(blob);
     window.open(url);
+}
+
+// Construct a workout from the given info
+async function buildWorkout() {
+    var style = getStyle();
+    var latex = makeLatex(style);
+    var images = collectImages(latex);
+
+    console.log("latex: " + latex);
+
+    const pdf = fetch(compile_url, {
+	method: 'POST',
+	headers: {
+	    'Accept': 'application/pdf',
+	    'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({ "latex": latex,
+			       "images": images})
+    })
+	  .then((response) => response.blob())
+	  .then((blob) => showInOtherTab(blob));
 }
