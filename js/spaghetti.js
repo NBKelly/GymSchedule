@@ -1,4 +1,4 @@
-const compile_url = "https://spark-latex-backend.herokuapp.com/compile/"
+const compile_url = "https://workout-templar-api.herokuapp.com/compile/"
 //"http://127.0.0.1:5000/compile/"
 
 let Exercise = class {
