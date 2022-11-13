@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise Editor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/exercise-editor.js"></script>
+    <link rel="stylesheet" href="cobrastyle.css">
+  </head>
+  <body onload="editorOnLoad()">
+    <h1>Exercise Editor</h1>
+
+    <p>Select an exercise from the list to modify it, or add a new entry entirely.</p>
+
+    <table>
+      <tr>
+	<td> <label for="selectExercise">Select Exercise:</label> </td>
+	<td>
+	  <select id="selectExercise" name="selectExercise"> </select>
+	  <button class="button button2" id="loadExerciseButton"
+		  onclick="loadExercise()">Load Exercise</button>
+	  <button class="button button2" id="loadExerciseButton"
+		  onclick="deleteExercise()">Delete Exercise</button>
+	</td>
+      </tr>
+      <tr>
+	<td> <label for="newExercise">New Exercise:</label> </td>
+	<td> <input type="text" placeholder="Ankle Snappers" id="newExercise" name="newExercise">
+	  <button class="button button2" id="newExerciseButton"
+		  onclick="newExercise()">New Exercise</button></td>
+      </tr>
+    </table>
+    <hr style="width:100%;text-align:left;margin-left:0">
+
+    <p>Attributes standard to the exercise.</p>
+
+    <table>
+      <tr>
+	<td><label for="exerciseName">Exercise Name: </label> </td>
+	<td><input type="text" id="exerciseName" name="exerciseName" placeholder="Seated Pullup"></td>
+      </tr>
+      <tr>
+	<td><label for="categories">Categories (comma separated): </label>
+	<td><input type="text" id="categories" name="categories" placeholder="Compound, Bodyweight"></td>
+      </tr>
+      <tr>
+	<td><label for="exerciseTip">Tip (general): </label></td>
+	<td><input type="text" id="exerciseTip" name="exerciseTip" placeholder="Go hard"></td>
+      </tr>
+      <tr>
+	<td><label for="image">Image (or blank): </label></td>
+	<td><input type="text" id="image" name="image" placeholder="images/deadlift.png"></td>
+      </tr>
+    </table>
+
+    <p>Focii for the exercises (things like: Power/Strength/Hypertrophy/Beginner/etc)</p>
+    <button class="button button2" id="addFocusButton"
+		  onclick="addFocus()">Add Focus</button>
+    <table>
+      <thead><tr>
+	<th>&nbsp;Focus Name&nbsp;</th>
+	<th>&nbsp;Sets&nbsp;</th>
+	<th>&nbsp;Reps&nbsp;</th>
+	<th>&nbsp;Rest Time&nbsp;</th>
+	<th>&nbsp;Tip/Explainer (optional)</th>
+      </tr></thead>
+      <tbody id="focusTable">
+
+      </tbody>
+    </table>
+
+    <br>
+
+    <button class="button button2" id="saveExerciseButton"
+	    onclick="saveExercise()">Save Exercise</button>
+    <button class="button button2" id="showJSONButton"
+	    onclick="showJSON()">Show JSON</button>
+  </body>
+</html>
