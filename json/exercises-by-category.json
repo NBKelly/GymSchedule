@@ -1,39 +1,280 @@
 {
-    "categories": ["Powerlifting", "Compound", "Isolation - Arms",
-		   "Isolation - Back", "Isolation - Chest",
-		   "Isolation - Core", "Isolation - Legs",
-		   "Isolation - Other", "Olympic", "Bodybuilding"],
     "exercises": [
-	{
-	    "name": "Clean Long Pull",
-	    "categories": ["Olympic", "Compound"],
-	    "tip": "Bar may not strike body. No hook grip.",
-	    "focus": [
-		{"name": "Strength", "val": {"reps": "5", "sets": "3", "rest": "1-3m"}},
-		{"name": "Power", "val": {"reps": "1-2", "sets": "5", "rest": "1-5m"}}
-	    ]
-	},
-	{
-	    "name": "Deadlift",
-	    "categories": ["Powerlifting", "Compound"],
-	    "tip": "Do not round lower back.",
-	    "image": "images/deadlift.png",
-	    "focus": [
-		{"name": "Strength", "val": {"reps": "5", "sets": "5", "rest": "1-3m"}},
-		{"name": "Hypertrophy", "val": {"reps": "10", "sets": "3", "rest": "60s"}},
-		{"name": "Beginner", "val": {"reps": "8-12", "sets": "2", "rest": "45-90s"}}
-	    ]
-	},
-	{
-	    "name": "Squat",
-	    "categories": ["Powerlifting", "Compound"],
-	    "tip": "Don't round back or buckle knees.",
-	    "focus": [
-		{"name": "Strength", "val": {"reps": "5", "sets": "3", "rest": "1-3m"}},
-		{"name": "Powerlifting ORM", "val": {"reps": "1", "sets": "5", "rest": "5m",
-						     "tip": "Hip crease below knees"}},
-		{"name": "Hypertrophy", "val": {"reps": "10", "sets": "3", "rest": "60s"}}
-	    ]
-	}
+        {
+            "name": "Clean Long Pull",
+            "categories": [
+                "Compound",
+                "Olympic"
+            ],
+            "tip": "Bar may not strike body. No hook grip.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "3",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Power",
+                    "val": {
+                        "sets": "5",
+                        "reps": "1-2",
+                        "rest": "1-5m"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Deadlift",
+            "categories": [
+                "Compound",
+                "Powerlifting"
+            ],
+            "tip": "Do not round lower back.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Squat",
+            "categories": [
+                "Compound",
+                "Powerlifting"
+            ],
+            "tip": "Don't round back or buckle knees.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "3",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Powerlifting ORM",
+                    "val": {
+                        "sets": "5",
+                        "reps": "1",
+                        "rest": "5m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TRX Pistol Squats/Squat Jumps",
+            "categories": [
+                "Calisthenics",
+                "TRX"
+            ],
+            "tip": "1 leg out in front/drive through heels",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10-12",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Assisted Pull-ups (Band)",
+            "categories": [
+                "Assistance",
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Overhand grip/Squeeze shoulder blades together",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TRX Rows",
+            "categories": [
+                "TRX",
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Row up to armpits/don't hunch at bottom of movement",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10-12",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Supermans",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Chest and legs off the ground",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10-12",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Lunges/TRX Split Jumps",
+            "categories": [
+                "TRX",
+                "Calisthenics"
+            ],
+            "tip": "Loop up/bend back straight/bend back knee",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Push Ups",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Straight back/chest to ground/keep core tight",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10-12",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Step-ups/Box jumps",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Whole foot on box/drive up",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Bridges",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Feet hip width apart/drive hips up",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Plank",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Straight back, brace core",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Side Plank/Hip Dips",
+            "categories": [
+                "Bodyweight",
+                "Calisthenics"
+            ],
+            "tip": "Body inline/hips up",
+            "focus": [
+                {
+                    "name": "General",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10-15",
+                        "rest": "1 min"
+                    }
+                }
+            ]
+        }
     ]
 }
