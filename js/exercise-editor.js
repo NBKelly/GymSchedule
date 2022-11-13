@@ -237,7 +237,7 @@ function showJSON() {
 	objExercises.push(ex);
     }
 
-    var jsonWindow = window.open("data:text/json," + encodeURIComponent(JSON.stringify(obj)),
+    var jsonWindow = window.open("data:text/json," + encodeURIComponent(JSON.stringify(obj, null, 4)),
 				 "_blank");
     jsonWindow.focus();
 }
