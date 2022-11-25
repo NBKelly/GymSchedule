@@ -1,0 +1,12 @@
+{
+    "options": [
+	{ "name": "default",
+	  "ext": ""},
+	{ "name": "male",
+	  "ext": "male/"},
+	{ "name": "female",
+	  "ext": "female/"},
+	{ "name": "anime",
+	  "ext": "anime/"}
+    ]
+}
