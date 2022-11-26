@@ -17,6 +17,11 @@ let Exercise = class {
 	this.raw_reps = raw_reps; //#5
 	this.rest = rest; //#6
 	this.image = image; //#7
+	this.combined_reps = raw_sets + " x " + raw_sets;
+	if (raw_sets == "" || raw_sets == "1")
+	    this.combined_reps = raw_reps;
+	else if (raw_reps == "")
+	    this.combined_reps = raw_sets;
     }
 
     latex(style)   {
@@ -28,7 +33,8 @@ let Exercise = class {
 	    .replaceAll('#4', this.raw_sets)
 	    .replaceAll('#5', this.raw_reps)
 	    .replaceAll('#6', this.rest)
-	    .replaceAll('#7', this.image);
+	    .replaceAll('#7', this.image)
+	    .replaceAll('#8', this.combined_reps);
 
 	return style['latex-exercise']
 	    .replaceAll('#1', this.name)
@@ -36,7 +42,9 @@ let Exercise = class {
 	    .replaceAll('#3', this.reminder)
 	    .replaceAll('#4', this.raw_sets)
 	    .replaceAll('#5', this.raw_reps)
-	    .replaceAll('#6', this.rest);}
+	    .replaceAll('#6', this.rest)
+	    .replaceAll('#8', this.combined_reps)
+	;}
 
     display(style, count, index) {
 	return this.processDisplay(style, count, index)
@@ -45,7 +53,8 @@ let Exercise = class {
 	    .replaceAll('#3', this.reminder)
 	    .replaceAll('#4', this.raw_sets)
 	    .replaceAll('#5', this.raw_reps)
-	    .replaceAll('#6', this.rest);}
+	    .replaceAll('#6', this.rest)
+	    .replaceAll('#8', this.combined_reps);}
 
     processDisplay(style, count, index) {
 	if(count == 1)
