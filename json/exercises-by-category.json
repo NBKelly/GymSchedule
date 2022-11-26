@@ -284,6 +284,7 @@
                 "Plyometric"
             ],
             "tip": "Half squat, push through with toes",
+            "image": "images/squat-jump.jpg",
             "focus": [
                 {
                     "name": "Cardio",
@@ -299,10 +300,11 @@
             "name": "Leg Press",
             "categories": [
                 "Compound",
-                "Powerlifting",
-                "Machine"
+                "Machine",
+                "Powerlifting"
             ],
             "tip": "Controlled eccentric. Don't lock knees.",
+            "image": "images/leg-press.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -334,8 +336,8 @@
             "name": "Leg Curl",
             "categories": [
                 "Isolation",
-                "Machine",
-                "Legs"
+                "Legs",
+                "Machine"
             ],
             "tip": "Slow controlled negative.",
             "focus": [
@@ -369,8 +371,8 @@
             "name": "Leg Curl (prone)",
             "categories": [
                 "Isolation",
-                "Machine",
-                "Legs"
+                "Legs",
+                "Machine"
             ],
             "tip": "Slow controlled negative.",
             "focus": [
@@ -404,10 +406,11 @@
             "name": "Leg Extension",
             "categories": [
                 "Isolation",
-                "Machine",
-                "Legs"
+                "Legs",
+                "Machine"
             ],
             "tip": "Slow controlled negative.",
+            "image": "images/leg-curl.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -439,10 +442,11 @@
             "name": "Calf Raise (seated)",
             "categories": [
                 "Isolation",
-                "Machine",
-                "Legs"
+                "Legs",
+                "Machine"
             ],
             "tip": "Slow controlled reps.",
+            "image": "images/seated-calf-raise.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -473,11 +477,12 @@
         {
             "name": "Cable Rotation",
             "categories": [
+                "Core",
                 "Isolation",
-                "Machine",
-                "Core"
+                "Machine"
             ],
             "tip": "Controlled negatives, ",
+            "image": "images/cable-rotation-neutral.png",
             "focus": [
                 {
                     "name": "Strength",
@@ -511,6 +516,7 @@
                 "Cardio"
             ],
             "tip": "Upright, proud posture.",
+            "image": "images/treadmill.jpg",
             "focus": [
                 {
                     "name": "Warmup",

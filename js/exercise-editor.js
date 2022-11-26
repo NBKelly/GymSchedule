@@ -229,12 +229,24 @@ function showJSON() {
 	    focuses.push(m_focus);
 	}
 
-	var ex = {"name": ex_plain.name,
-		  "categories": ex_plain.categories,
-		  "tip": ex_plain.tip,
-		  "focus": focuses};
+	if(ex_plain.image != null) {
+	    var ex = {"name": ex_plain.name,
+		      "categories": ex_plain.categories,
+		      "tip": ex_plain.tip,
+		      "image": ex_plain.image,
+		      "focus": focuses};
 
-	objExercises.push(ex);
+	    objExercises.push(ex);
+	}
+	else {
+	    var ex = {"name": ex_plain.name,
+		      "categories": ex_plain.categories,
+		      "tip": ex_plain.tip,
+		      "focus": focuses};
+
+	    objExercises.push(ex);
+	}
+
     }
 
     var jsonWindow = window.open("data:text/json," + encodeURIComponent(JSON.stringify(obj, null, 4)),
