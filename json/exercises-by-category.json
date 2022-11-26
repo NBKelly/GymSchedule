@@ -64,7 +64,8 @@
             "name": "Squat",
             "categories": [
                 "Compound",
-                "Powerlifting"
+                "Powerlifting",
+                "Legs"
             ],
             "tip": "Don't round back or buckle knees.",
             "focus": [
@@ -281,7 +282,8 @@
             "categories": [
                 "Calisthenics",
                 "Cardio",
-                "Plyometric"
+                "Plyometric",
+                "Legs"
             ],
             "tip": "Half squat, push through with toes",
             "image": "images/squat-jump.jpg",
@@ -340,6 +342,7 @@
                 "Machine"
             ],
             "tip": "Slow controlled negative.",
+            "image": "images/leg-curl-seated.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -375,6 +378,7 @@
                 "Machine"
             ],
             "tip": "Slow controlled negative.",
+            "image": "images/leg-curl-prone.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -410,7 +414,7 @@
                 "Machine"
             ],
             "tip": "Slow controlled negative.",
-            "image": "images/leg-curl.jpg",
+            "image": "images/leg-extension.jpg",
             "focus": [
                 {
                     "name": "Strength",
