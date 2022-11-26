@@ -548,7 +548,7 @@
                 "Shoulders"
             ],
             "tip": "Squeeze shoulder blades, keep core tight",
-            "image": "overhead-press.jpg",
+            "image": "images/overhead-press.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -584,7 +584,7 @@
                 "Isolation"
             ],
             "tip": "Slight lean back. Squeeze shoulder blades.",
-            "image": "Lat pulldown - wide grip.jpg",
+            "image": "images/Lat pulldown - wide grip.jpg",
             "focus": [
                 {
                     "name": "Strength",
@@ -620,7 +620,7 @@
                 "Chest"
             ],
             "tip": "Push from sternum. Actively grip bar.",
-            "image": "bench-press.jpg",
+            "image": "images/bench-press.jpg",
             "focus": [
                 {
                     "name": "Strength",
