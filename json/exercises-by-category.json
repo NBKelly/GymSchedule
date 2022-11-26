@@ -134,9 +134,9 @@
         {
             "name": "TRX Rows",
             "categories": [
-                "TRX",
                 "Bodyweight",
-                "Calisthenics"
+                "Calisthenics",
+                "TRX"
             ],
             "tip": "Row up to armpits/don't hunch at bottom of movement",
             "focus": [
@@ -171,8 +171,8 @@
         {
             "name": "Lunges/TRX Split Jumps",
             "categories": [
-                "TRX",
-                "Calisthenics"
+                "Calisthenics",
+                "TRX"
             ],
             "tip": "Loop up/bend back straight/bend back knee",
             "focus": [
@@ -272,6 +272,260 @@
                         "sets": "3",
                         "reps": "10-15",
                         "rest": "1 min"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Squat Jumps",
+            "categories": [
+                "Calisthenics",
+                "Cardio",
+                "Plyometric"
+            ],
+            "tip": "Half squat, push through with toes",
+            "focus": [
+                {
+                    "name": "Cardio",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "30s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leg Press",
+            "categories": [
+                "Compound",
+                "Powerlifting",
+                "Machine"
+            ],
+            "tip": "Controlled eccentric. Don't lock knees.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "3",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Powerlifting ORM",
+                    "val": {
+                        "sets": "5",
+                        "reps": "1",
+                        "rest": "5m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leg Curl",
+            "categories": [
+                "Isolation",
+                "Machine",
+                "Legs"
+            ],
+            "tip": "Slow controlled negative.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leg Curl (prone)",
+            "categories": [
+                "Isolation",
+                "Machine",
+                "Legs"
+            ],
+            "tip": "Slow controlled negative.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leg Extension",
+            "categories": [
+                "Isolation",
+                "Machine",
+                "Legs"
+            ],
+            "tip": "Slow controlled negative.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Calf Raise (seated)",
+            "categories": [
+                "Isolation",
+                "Machine",
+                "Legs"
+            ],
+            "tip": "Slow controlled reps.",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cable Rotation",
+            "categories": [
+                "Isolation",
+                "Machine",
+                "Core"
+            ],
+            "tip": "Controlled negatives, ",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Treadmill",
+            "categories": [
+                "Cardio"
+            ],
+            "tip": "Upright, proud posture.",
+            "focus": [
+                {
+                    "name": "Warmup",
+                    "val": {
+                        "sets": "1",
+                        "reps": "5-10m",
+                        "rest": ""
+                    }
+                },
+                {
+                    "name": "5-minute KM",
+                    "val": {
+                        "sets": "1",
+                        "reps": "5-10m",
+                        "rest": ""
                     }
                 }
             ]
