@@ -64,8 +64,8 @@
             "name": "Squat",
             "categories": [
                 "Compound",
-                "Powerlifting",
-                "Legs"
+                "Legs",
+                "Powerlifting"
             ],
             "tip": "Don't round back or buckle knees.",
             "focus": [
@@ -282,8 +282,8 @@
             "categories": [
                 "Calisthenics",
                 "Cardio",
-                "Plyometric",
-                "Legs"
+                "Legs",
+                "Plyometric"
             ],
             "tip": "Half squat, push through with toes",
             "image": "images/squat-jump.jpg",
@@ -536,6 +536,331 @@
                         "sets": "1",
                         "reps": "5-10m",
                         "rest": ""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Overhead Press",
+            "categories": [
+                "Compound",
+                "Powerlifting",
+                "Shoulders"
+            ],
+            "tip": "Squeeze shoulder blades, keep core tight",
+            "image": "overhead-press.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Lat Pulldown",
+            "categories": [
+                "Machine",
+                "Lats",
+                "Isolation"
+            ],
+            "tip": "Slight lean back. Squeeze shoulder blades.",
+            "image": "Lat pulldown - wide grip.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Bench Press",
+            "categories": [
+                "Compound",
+                "Powerlifting",
+                "Chest"
+            ],
+            "tip": "Push from sternum. Actively grip bar.",
+            "image": "bench-press.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cable Row",
+            "categories": [
+                "Core",
+                "Isolation",
+                "Machine"
+            ],
+            "tip": "Wide grip. Lean back, tighten core.",
+            "image": "images/cable row.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DB Lateral Raise",
+            "categories": [
+                "Shoulders",
+                "Dumbbells",
+                "Isolation"
+            ],
+            "tip": "Hip hinge. Pronate wrists.",
+            "image": "images/lateral-raise.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Face Pull",
+            "categories": [
+                "Shoulders",
+                "Machine",
+                "Isolation"
+            ],
+            "tip": "Squeeze shoulders. Pull directly to face.",
+            "image": "images/face-pull.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cable Tricep Extension",
+            "categories": [
+                "Triceps",
+                "Machine",
+                "Isolation"
+            ],
+            "tip": "Hinge at hips, pull directly overhead.",
+            "image": "images/tricep-extension-overhead.gif",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cable Tricep Pushdown",
+            "categories": [
+                "Triceps",
+                "Machine",
+                "Isolation"
+            ],
+            "tip": "Hinge at hips, push directly down.",
+            "image": "images/tricep-pushdown.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reverse Curl",
+            "categories": [
+                "Biceps",
+                "Machine",
+                "Isolation",
+                "Grip"
+            ],
+            "tip": "Slow, controlled curl.",
+            "image": "images/reverse curl.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
                     }
                 }
             ]
