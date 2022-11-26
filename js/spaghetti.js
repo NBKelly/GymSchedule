@@ -1,6 +1,13 @@
 const compile_url = "https://workout-templar-api.herokuapp.com/compile/"
 //"http://127.0.0.1:5000/compile/"
 
+let ImagePref = class {
+    constructor(name, ext) {
+	this.name = name;
+	this.ext = ext;
+    }
+}
+
 let Exercise = class {
     constructor(name, reps, reminder, raw_sets, raw_reps, rest, image) {
 	this.name = name; //#1
@@ -196,9 +203,85 @@ async function fetchJson(str) {
     return json;
 }
 
+function dragStart (e) {
+    var index = $(e.target).index()
+    e.dataTransfer.setData('text/plain', index)
+}
+
+function dropped (e) {
+    cancelDefault(e)
+
+    // get new and old index
+    let oldIndex = e.dataTransfer.getData('text/plain')
+    let target = $(e.target)
+    let newIndex = target.index()
+
+    if(newIndex == oldIndex)
+	return;
+
+    // remove dropped items at old place
+    let dropped = $(this).parent().children().eq(oldIndex).remove()
+
+    // insert the dropped items at new place
+    if (newIndex < oldIndex) {
+	target.before(dropped)
+    } else {
+	target.after(dropped)
+    }
+}
+
+function cancelDefault (e) {
+  e.preventDefault()
+  e.stopPropagation()
+  return false
+}
+
+
 var styles = {};
 var exercises = {}; //name -> exercise
 var exercises_by_category = {}; //cat -> exercise name
+var imageOptions = {};
+let items = [];
+
+function makePrefs() {
+    var imagePrefs = [];
+    var listitems = document.querySelectorAll('#imageprefs > li');
+
+    listitems.forEach(
+	(item) => {
+	    var name = item.innerHTML;
+	    imagePrefs.push(imageOptions[name].ext);
+	});
+
+    return imagePrefs;
+}
+
+async function loadImagePrefs() {
+    var tab = document.querySelector('#imageprefs');
+    var json = await fetchJson("image-preference");
+
+    json.options.forEach(
+	(option) => {
+	    imageOptions[option["name"]] = new ImagePref(option["name"], option["ext"]);
+	});
+
+    // TODO
+    for (const [optName, value] of Object.entries(imageOptions)) {
+	var opt = document.createElement('li');
+	opt.innerHTML = optName;
+	opt.value = optName;
+	tab.appendChild(opt);
+	items.push(opt);
+    };
+
+    items.forEach(item => {
+	$(item).prop('draggable', true);
+	item.addEventListener('dragstart', dragStart);
+	item.addEventListener('drop', dropped);
+	item.addEventListener('dragenter', cancelDefault);
+	item.addEventListener('dragover', cancelDefault);
+    });
+}
 
 async function loadStyles() {
     var select = document.querySelector('#stylesheet');
@@ -254,6 +337,7 @@ async function loadExercises() {
 function spaghettiOnLoad() {
     loadStyles();
     loadExercises();
+    loadImagePrefs();
 }
 
 function getStyle() {
@@ -478,7 +562,7 @@ function collectImages(latex) {
 
     res = [...new Set(res)]
 
-    console.log(res);
+    console.log("images: " + res);
     return res;
 }
 
@@ -493,6 +577,9 @@ async function buildWorkout() {
     var style = getStyle();
     var latex = makeLatex(style);
     var images = collectImages(latex);
+    var prefs = makePrefs();
+
+    console.log("prefs: " + prefs);
 
     console.log("latex: " + latex);
 
@@ -502,8 +589,11 @@ async function buildWorkout() {
 	    'Accept': 'application/pdf',
 	    'Content-Type': 'application/json'
 	},
-	body: JSON.stringify({ "latex": latex,
-			       "images": images})
+	body: JSON.stringify({
+	    "latex": latex,
+	    "images": images,
+	    "imageprefs": prefs
+	})
     })
 	  .then((response) => response.blob())
 	  .then((blob) => showInOtherTab(blob));
