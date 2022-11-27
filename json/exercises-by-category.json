@@ -579,9 +579,9 @@
         {
             "name": "Lat Pulldown",
             "categories": [
-                "Machine",
+                "Isolation",
                 "Lats",
-                "Isolation"
+                "Machine"
             ],
             "tip": "Slight lean back. Squeeze shoulder blades.",
             "image": "images/Lat pulldown - wide grip.jpg",
@@ -615,9 +615,9 @@
         {
             "name": "Bench Press",
             "categories": [
+                "Chest",
                 "Compound",
-                "Powerlifting",
-                "Chest"
+                "Powerlifting"
             ],
             "tip": "Push from sternum. Actively grip bar.",
             "image": "images/bench-press.jpg",
@@ -687,9 +687,9 @@
         {
             "name": "DB Lateral Raise",
             "categories": [
-                "Shoulders",
                 "Dumbbells",
-                "Isolation"
+                "Isolation",
+                "Shoulders"
             ],
             "tip": "Hip hinge. Pronate wrists.",
             "image": "images/lateral-raise.jpg",
@@ -723,9 +723,9 @@
         {
             "name": "Face Pull",
             "categories": [
-                "Shoulders",
+                "Isolation",
                 "Machine",
-                "Isolation"
+                "Shoulders"
             ],
             "tip": "Squeeze shoulders. Pull directly to face.",
             "image": "images/face-pull.jpg",
@@ -759,9 +759,9 @@
         {
             "name": "Cable Tricep Extension",
             "categories": [
-                "Triceps",
+                "Isolation",
                 "Machine",
-                "Isolation"
+                "Triceps"
             ],
             "tip": "Hinge at hips, pull directly overhead.",
             "image": "images/tricep-extension.jpg",
@@ -795,9 +795,9 @@
         {
             "name": "Cable Tricep Pushdown",
             "categories": [
-                "Triceps",
+                "Isolation",
                 "Machine",
-                "Isolation"
+                "Triceps"
             ],
             "tip": "Hinge at hips, push directly down.",
             "image": "images/tricep-pushdown.jpg",
@@ -832,9 +832,9 @@
             "name": "Reverse Curl",
             "categories": [
                 "Biceps",
-                "Machine",
+                "Grip",
                 "Isolation",
-                "Grip"
+                "Machine"
             ],
             "tip": "Slow, controlled curl.",
             "image": "images/reverse curl.jpg",
@@ -861,6 +861,79 @@
                         "sets": "3",
                         "reps": "12",
                         "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Machine Crunch",
+            "categories": [
+                "Core",
+                "Isolation",
+                "Machine"
+            ],
+            "tip": "Underhand grip. Pull forward with core.",
+            "image": "images/machine-crunch.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Chest Press",
+            "categories": [
+                "Chest",
+                "Compound",
+                "Powerlifting",
+                "Machine"
+            ],
+            "tip": "Push from sternum. Fully extend arms..",
+            "image": "images/chest-press.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "10",
+                        "rest": "60s"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
                     }
                 }
             ]
