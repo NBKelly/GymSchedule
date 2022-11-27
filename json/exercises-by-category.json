@@ -937,6 +937,42 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Seated Row",
+            "categories": [
+                "Back",
+                "Isolation",
+                "Machine"
+            ],
+            "tip": "Lean back, tighten core.",
+            "image": "images/seated rows.jpg",
+            "focus": [
+                {
+                    "name": "Strength",
+                    "val": {
+                        "sets": "5",
+                        "reps": "5",
+                        "rest": "1-3m"
+                    }
+                },
+                {
+                    "name": "Beginner",
+                    "val": {
+                        "sets": "2",
+                        "reps": "8-12",
+                        "rest": "45-90s"
+                    }
+                },
+                {
+                    "name": "Hypertrophy",
+                    "val": {
+                        "sets": "3",
+                        "reps": "12",
+                        "rest": "60s"
+                    }
+                }
+            ]
         }
     ]
 }
