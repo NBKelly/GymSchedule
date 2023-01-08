@@ -17,7 +17,7 @@ let Exercise = class {
 	this.raw_reps = raw_reps; //#5
 	this.rest = rest; //#6
 	this.image = image; //#7
-	this.combined_reps = raw_sets + " x " + raw_sets;
+	this.combined_reps = raw_reps + " x " + raw_sets;
 	if (raw_sets == "" || raw_sets == "1")
 	    this.combined_reps = raw_reps;
 	else if (raw_reps == "")
